@@ -1,5 +1,6 @@
 """ Mathematical functions and models """
 
+import math
 from typing import Union
 
 import matplotlib.pyplot as plt
@@ -111,7 +112,7 @@ def cost_exp_decay(x_data, y_data, params, threshold=None):
     """
     model = exp_function(x_data, *params)
     cost = qtt.pgeometry.robustCost(y_data - model, thr=threshold)
-    cost = np.linalg.norm(cost)
+    cost = math.sqrt(cost.dot(cost))
     return cost
 
 
